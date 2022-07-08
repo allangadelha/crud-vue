@@ -20,10 +20,14 @@ const ClientSchema = new Schema({
         require: true
     },
 
-    password: {
+    phone: {
         type: String,
-        require: true,
-        select: false
+        require: true
+    },
+
+    address: {
+        type: String,
+        require: true
     },
 
     createdAt: {

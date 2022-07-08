@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const MONGO_URI = 'mongodb+srv://allandev:12345seis@cluster0.zamjh.mongodb.net/?retryWrites=true&w=majority';
+// const Client = require('../models/Client');
 
 class DBController {
     constructor() {
@@ -17,6 +18,17 @@ class DBController {
             console.error(err);
         }
     }
+
+    // addClient(res, data) {
+    //     Client.create(data, (err, newClient) => {
+    //         if(err) throw err;
+    //         return res.json({
+    //             status: 200,
+    //             message: "Cliente cadastrado com sucesso.",
+    //             client: newClient
+    //         })
+    //     });
+    // };
 }
 
 exports.db = new DBController();
