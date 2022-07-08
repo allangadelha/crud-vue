@@ -3,34 +3,34 @@ const bodyParser = require('body-parser');
 
 const { db } = require('../database/db');
 const { clientController } = require('../controllers/clientController');
-const app = express();
+const clientsRoutes = express();
 
-app.use(bodyParser.json());
+clientsRoutes.use(bodyParser.json());
 
-app.get('/api/clients', (req, res) => {
+clientsRoutes.get('/api/clients', (req, res) => {
     clientController.getAllClient(res);
 });
 
-app.get('/api/clients/:id', (req, res) => {
+clientsRoutes.get('/api/clients/:id', (req, res) => {
     let { id } = req.params;
     clientController.getClient(res, id);
 });
 
-app.post('/api/clients', (req, res) => {
+clientsRoutes.post('/api/clients', (req, res) => {
     let data = req.body;
     clientController.addClient(res, data);
 });
 
-app.put('/api/clients/:id', (req, res) => {
+clientsRoutes.put('/api/clients/:id', (req, res) => {
     let { id } = req.params;
     let data = req.body;
     clientController.updateClient(res, id, data);
 });
 
-app.delete('/api/clients/:id', (req, res) => {
+clientsRoutes.delete('/api/clients/:id', (req, res) => {
     let { id } = req.params;
     clientController.deleteClient(res, id);
 });
 
-exports.app = app;
+exports.clientsRoutes = clientsRoutes;
 

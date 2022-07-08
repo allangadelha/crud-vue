@@ -1,3 +1,6 @@
-const { app } = require('./routes/clientsRoutes');
+const { usersRoutes } = require('./routes/usersRoutes');
+const { clientsRoutes } = require('./routes/clientsRoutes');
 
-app.listen(3001, console.log("Rodando na porta 3001"));
+usersRoutes.use(clientsRoutes);
+
+usersRoutes.listen(3001, console.log("Rodando na porta 3001"));
