@@ -18,7 +18,7 @@ usersRoutes.get('/api/users/:id', (req, res) => {
 
 usersRoutes.post('/api/users/register', async (req, res) => {
     let data = req.body;
-    userController.registerUser(res, data);
+    userController.addUser(res, data);
 });
 
 usersRoutes.put('/api/users/:id', (req, res) => {

@@ -41,7 +41,7 @@ class UserController {
         });
     };
 
-    async registerUser(res, data) {
+    async addUser(res, data) {
         const { name, email, password } = data;
         const findUser = await User.findOne({ email });
         if (findUser) {
@@ -70,7 +70,7 @@ class UserController {
         });
     };
 
-    updateUser(res, id, data) {
+    async updateUser(res, id, data) {
         const findUser = await User.findById(id);
         if (!findUser || findUser === null) {
             res.status(404).json({
@@ -98,7 +98,16 @@ class UserController {
         });
     };
 
-    deleteUser(res, id) {
+    async deleteUser(res, id) {
+        const deleteUser = await User.findById(id);
+        if (!deleteUser || deleteUser === null) {
+            res.status(404).json({
+                status: 404,
+                message: "Usuário não encontrado."
+            });
+            return false;
+        }
+
         User.deleteOne({
             _id: id
         }, (err) => {
