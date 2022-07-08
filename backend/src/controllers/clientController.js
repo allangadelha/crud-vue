@@ -5,11 +5,11 @@ class ClientController {
         Client.find({
         }, (err, clients) => {
             if (err) throw err;
-            if(!clients || clients === null) {
+            if (!clients || clients === null) {
                 return res.status(404).json({
                     status: 404,
                     message: "Nenhum cliente encontrado."
-                });    
+                });
             }
             return res.json({
                 status: 200,
@@ -25,7 +25,7 @@ class ClientController {
             _id: id
         }, (err, client) => {
             if (err) throw err;
-            if(!client || client === null) {
+            if (!client || client === null) {
                 res.status(404).json({
                     status: 404,
                     message: "Cliente não encontrado."
@@ -40,14 +40,24 @@ class ClientController {
         });
     };
 
-    addClient(res, data) {
+    async addClient(res, data) {
+        const { email } = data;
+        const findClient = await Client.findOne({ email });
+        if (findClient) {
+            res.status(404).json({
+                status: 404,
+                message: "Cliente já cadastrado."
+            });
+            return false;
+        }
+
         Client.create(data, (err, newClient) => {
             if (err) throw err;
-            if(!newClient || newClient === null) {
+            if (!newClient || newClient === null) {
                 return res.staus(404).json({
                     status: 404,
                     message: "Não foi possível cadastrar cliente."
-                });    
+                });
             }
             return res.json({
                 status: 200,
@@ -57,16 +67,25 @@ class ClientController {
         });
     };
 
-    updateClient(res, id, data) {
+    async updateClient(res, id, data) {
+        const findClient = await Client.findById(id);
+        if (!findClient || findClient === null) {
+            res.status(404).json({
+                status: 404,
+                message: "Cliente não encontrado."
+            });
+            return false;
+        }
+
         Client.updateOne({
             _id: id
         }, data, (err, updateClient) => {
             if (err) throw err;
-            if(!updateClient || updateClient === null) {
+            if (!updateClient || updateClient === null) {
                 return res.status(404).json({
                     status: 404,
                     message: "Não foi possível atualizar cliente."
-                });    
+                });
             }
             return res.json({
                 status: 200,
@@ -76,7 +95,16 @@ class ClientController {
         });
     };
 
-    deleteClient(res, id) {
+    async deleteClient(res, id) {
+        const deleteClient = await Client.findById(id);
+        if (!deleteClient || deleteClient === null) {
+            res.status(404).json({
+                status: 404,
+                message: "Cliente não encontrado."
+            });
+            return false;
+        }
+
         Client.deleteOne({
             _id: id
         }, (err) => {
