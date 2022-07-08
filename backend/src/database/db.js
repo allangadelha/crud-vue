@@ -14,21 +14,10 @@ class DBController {
                 useNewUrlParser: true
             });
             console.log("Conectado a base de dados.");
-        } catch (err) {            
+        } catch (err) {
             console.error(err);
         }
     }
-
-    // addClient(res, data) {
-    //     Client.create(data, (err, newClient) => {
-    //         if(err) throw err;
-    //         return res.json({
-    //             status: 200,
-    //             message: "Cliente cadastrado com sucesso.",
-    //             client: newClient
-    //         })
-    //     });
-    // };
 }
 
 exports.db = new DBController();
