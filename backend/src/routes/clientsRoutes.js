@@ -1,15 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { db } = require('../database/db');
 const { clientController } = require('../controllers/clientController');
+const authMiddleware = require('../middlewares/auth');
 const clientsRoutes = express();
+
+clientsRoutes.use(authMiddleware);
 
 clientsRoutes.use(bodyParser.json());
 
-const authMiddleware = require('../middlewares/auth');
-
-clientsRoutes.use(authMiddleware);
 
 clientsRoutes.get('/api/clients', (req, res) => {
     clientController.getAllClient(res);
