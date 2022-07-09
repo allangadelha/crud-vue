@@ -1,7 +1,15 @@
 const { hash, compare } = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+const SECRET = "teste-api";
 class AuthController {
+
+    generateToken(params = {}) {
+        return jwt.sign(params, SECRET, {
+            expiresIn: 180
+        });
+    }
 
     async auth(res, data) {
         const { email, password } = data;
@@ -16,11 +24,10 @@ class AuthController {
         }
 
         const passwordValid = await compare(password, user.password);
-        console.log("PASS: ", passwordValid);
 
         if (!passwordValid) {
             res.status(401).json({
-                status:401,
+                status: 401,
                 error: "Usuário não encontrado"
             });
             return false;
@@ -37,13 +44,15 @@ class AuthController {
                 });
                 return false;
             }
-            
+
             return res.json({
                 status: 200,
                 message: "Usuário encontrado com sucesso.",
-                user
+                user,
+                token: this.generateToken({ id: user.id })
             });
         });
+
     };
 
     async register(res, data) {
@@ -70,7 +79,8 @@ class AuthController {
             return res.json({
                 status: 200,
                 message: "Usuário cadastrado com sucesso.",
-                user: newUser
+                user: newUser,
+                token: this.generateToken({ id: newUser.id })
             });
         });
     };

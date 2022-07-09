@@ -7,6 +7,10 @@ const clientsRoutes = express();
 
 clientsRoutes.use(bodyParser.json());
 
+const authMiddleware = require('../middlewares/auth');
+
+clientsRoutes.use(authMiddleware);
+
 clientsRoutes.get('/api/clients', (req, res) => {
     clientController.getAllClient(res);
 });
