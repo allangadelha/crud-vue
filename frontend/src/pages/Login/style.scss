@@ -1,0 +1,41 @@
+@import '@/assets/scss/main';
+
+.login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #EBEBEB;
+
+    .content-login {
+        width: 400px;
+        height: 500px;
+        background-color: #42b983;
+        border-radius: 7px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    header {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            color: #FFFFFF;
+            font-size: 28px;
+        }
+    }
+
+    .form {
+        width: 70%;
+        margin-top: 40px;
+
+        label {
+            color: #FFFFFF;
+        }
+    }
+}
