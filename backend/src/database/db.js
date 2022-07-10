@@ -16,7 +16,6 @@ class DBController {
             console.log("Conectado a base de dados.");
         } catch (err) {
             console.error(err);
-            mongoose.close();
         }
     }
 }
