@@ -6,7 +6,7 @@
                     <ListsComponent :clients="clients" />
                 </div>
             </div>
-                    <button class="btn-primary float-right logout" @click="logout">Sair</button>
+            <button class="btn-primary float-right logout" @click="logout">Sair</button>
         </div>
     </div>
 </template>
