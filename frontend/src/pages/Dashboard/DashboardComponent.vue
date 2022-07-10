@@ -35,7 +35,7 @@ export default {
 
     methods: {
         async getClients () {
-            await axios.get('https://crud-vue-backend.herokuapp.com/api/clients', {
+            await axios.get('http://localhost:3001/api/clients', {
                 headers: {
                     'Authorization': `Bearer ${this.token}`
                 }
@@ -57,7 +57,6 @@ export default {
 
         logout() {
             localStorage.removeItem("token");
-            console.log(this.token)
             this.logout = this.$session.destroy();
             this.$router.push('/');
         }
