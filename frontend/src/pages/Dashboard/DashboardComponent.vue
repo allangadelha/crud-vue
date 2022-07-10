@@ -6,6 +6,7 @@
                     <ListsComponent :clients="clients" />
                 </div>
             </div>
+                    <button class="btn-primary float-right logout" @click="logout">Sair</button>
         </div>
     </div>
 </template>
@@ -42,14 +43,23 @@ export default {
             .then((res) => {
                 if(res.data.status == 200) {
                     let clients = res.data.clients;
-                    console.log("sessao:", this.$session)
                     this.clients = clients;
+                    this.$session.start();
+
                     return clients;
                 }
             }).catch((err) => {
+                this.$session.destroy();
                 this.$router.push('/');
                 console.log(err);
             });
+        },
+
+        logout() {
+            localStorage.removeItem("token");
+            console.log(this.token)
+            this.logout = this.$session.destroy();
+            this.$router.push('/');
         }
     },
 }
