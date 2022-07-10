@@ -21,7 +21,8 @@
                         <td>{{ client.email}}</td>
                         <td>{{ client.cpf}}</td>
                         <td>{{ client.phone}}</td>
-                        <td>{{ client.address}}</td>
+                        <td><button class="btn btn-primary">Editar</button></td>
+                        <td><button class="btn btn-danger" @click="deleteClient(client._id)">Excluir</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -31,13 +32,46 @@
 
 <script>
 
+import axios from 'axios'
 
 export default {
     name: 'ListsComponent',
     
     props: {
         clients: Array,
-    }
+    },
+
+    data() {
+        return {
+            token: JSON.parse(localStorage.getItem('token'))
+        }
+    },
+
+    methods: {
+         deleteClient(id) {
+            if(confirm("Deseja realmente excluir?")){
+                console.log("id: ", id)
+                console.log("token: ", this.token)
+                axios.delete(`http://localhost:3001/api/clients/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${this.token}`
+                    }
+                })
+                .then((res) => {
+                    if(res.data.status == 200) {
+                        return true;
+                    }
+                }).catch((err) => {
+                    console.log('deu mago:', err);
+                    return false;
+                });
+                document.location.reload(true);
+            } else {
+                return false;
+            }
+
+        }
+    },
 }
 </script>
 
@@ -49,3 +83,4 @@ export default {
         border-radius: 3px;
     }
 </style>
+
