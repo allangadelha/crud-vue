@@ -9,11 +9,11 @@
                     <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="email" class="form-control" v-model="LoginData.email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu email">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Senha</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <input type="password" class="form-control" v-model="LoginData.password" id="exampleInputPassword1" placeholder="Digite sua senha">
                         </div>
                         <button type="submit" class="btn btn-primary" @click.prevent="login">Entrar</button>
                     </form>
@@ -24,17 +24,36 @@
 </template>
 
 <script>
+
+import axios from 'axios'
+
 export default {
     name: 'LoginComponent',
     data() {
         return {
-
+            LoginData: new Object(),
         }
     },
 
     methods: {
         login () {
-            this.$router.push({ name: 'home'})
+            var data = {
+                email: this.LoginData.email,
+                password: this.LoginData.password
+            }
+            axios.post(process.env.URL_LOGIN, data)
+            .then((res) => {
+                console.log("data: ", data);
+
+                var user = res.data.user;
+                var token = res.data.token;
+                console.log("user: ", user);
+                console.log("token: ", token);
+                if(!user) {
+                    localStorage.setItem('user', JSON.stringify(user));
+                    this.$router.push({ name: 'home'})
+                }
+            });
         }
     }
 }

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-const MONGO_URI = 'mongodb+srv://allandev:12345seis@cluster0.zamjh.mongodb.net/?retryWrites=true&w=majority';
-// const Client = require('../models/Client');
+const MONGO_URI = process.env.MONGO_URI;
 
 class DBController {
     constructor() {
@@ -16,6 +16,7 @@ class DBController {
             console.log("Conectado a base de dados.");
         } catch (err) {
             console.error(err);
+            mongoose.close();
         }
     }
 }

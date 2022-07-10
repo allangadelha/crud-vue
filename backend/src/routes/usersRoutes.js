@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const { userController } = require('../controllers/userController');
 const usersRoutes = express();
@@ -8,6 +9,7 @@ const authMiddleware = require('../middlewares/auth');
 usersRoutes.use(authMiddleware);
 
 usersRoutes.use(bodyParser.json());
+usersRoutes.use(cors());
 
 usersRoutes.get('/api/users', (req, res) => {
     userController.getAllUser(res);
