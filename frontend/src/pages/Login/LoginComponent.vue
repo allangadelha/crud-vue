@@ -47,6 +47,7 @@ export default {
                 var token = res.data.token;
                 if(user) {
                     localStorage.setItem('user', JSON.stringify(user));
+                    localStorage.setItem('token', JSON.stringify(token));
                     this.$router.push('/dashboard');
                 }
             });
