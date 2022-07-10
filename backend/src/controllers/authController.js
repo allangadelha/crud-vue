@@ -1,8 +1,9 @@
 const { hash, compare } = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+require('dotenv').config();
 
-const SECRET = "teste-api";
+const SECRET = process.env.SECRET;
 class AuthController {
 
     generateToken(params = {}) {

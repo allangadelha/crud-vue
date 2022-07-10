@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const { clientController } = require('../controllers/clientController');
 const authMiddleware = require('../middlewares/auth');
@@ -8,7 +9,7 @@ const clientsRoutes = express();
 clientsRoutes.use(authMiddleware);
 
 clientsRoutes.use(bodyParser.json());
-
+clientsRoutes.use(cors());
 
 clientsRoutes.get('/api/clients', (req, res) => {
     clientController.getAllClient(res);

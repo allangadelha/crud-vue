@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-const SECRET = "teste-api";
+const SECRET = process.env.SECRET;
+
 module.exports = (req, res, next) => {
     const authHeader = req.headers.authorization;
 
