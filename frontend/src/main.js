@@ -5,10 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import LoginComponent from './pages/Login/LoginComponent'
 import DashboardComponent from './pages/Dashboard/DashboardComponent'
+import VueSession from 'vue-session'
 
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
+Vue.use(VueSession)
 
 const routes = [
   { path: '/', name:'login', component: LoginComponent },
