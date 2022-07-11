@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "d05f1acf-061f-47a1-bf9c-165ed9abfa8b",
+		"name": "api-vue",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6461788"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Criando usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Allan Gadelha3\",\n    \"email\": \"allangadelha3@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscando todos os usuários",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzhhYWI1MmRhYTc1YWUxN2FhMGY3OCIsImlhdCI6MTY1NzM3MzI3OSwiZXhwIjoxNjU3MzczNDU5fQ.BlJBhfCppXmRGoy5t3IChRRCeKKkEyN2X6Kpz7nUVJ8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscando todos os usuários",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users/62c8890c5556d0aad374cccf",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"62c8890c5556d0aad374cccf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizando usuário",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Allan Gadelha Xavier\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/62c8890c5556d0aad374cccf",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"62c8890c5556d0aad374cccf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletando um usuário",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users/62c8890c5556d0aad374cccf",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"62c8890c5556d0aad374cccf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "clients",
+			"item": [
+				{
+					"name": "Buscando todos os clientes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzhhYWI1MmRhYTc1YWUxN2FhMGY3OCIsImlhdCI6MTY1NzQ4NjM5NCwiZXhwIjoxNjU3NDg4MTk0fQ.-stbvKjpD73z7biFCVM4jp0EV9AYPAAH4zyKKh3lXDs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscando um cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/clients/62c870b72ec49f624895ce6a",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"clients",
+								"62c870b72ec49f624895ce6a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criando cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzhhYWI1MmRhYTc1YWUxN2FhMGY3OCIsImlhdCI6MTY1NzQ5MTE1NiwiZXhwIjoxNjU3NDkyOTU2fQ.ArlM4ZPTLpCKgUo10f7XIbvaVi3LE0mNR0sNCjYBOzk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Allan Gadelha100\",\n    \"email\": \"allangadelha100@gmail.com\",\n    \"cpf\": \"000.000.000-10\",\n    \"phone\": \"85999999999\",\n    \"address\": \"Rua 01, N. 10\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizando cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Allan Gadelha Xavier\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/clients/62c89dfdc610815ca79ad450",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"clients",
+								"62c89dfdc610815ca79ad450"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletando um cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/clients/62c8a14439d7a87643f37205",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"clients",
+								"62c8a14439d7a87643f37205"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Registrar usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Allan Gadelha110111\",\n    \"email\": \"allangadelha110111@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autorização de usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"allangadelha10@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/authenticate",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://crud-vue-backend.herokuapp.com/",
+			"type": "string"
+		}
+	]
+}
